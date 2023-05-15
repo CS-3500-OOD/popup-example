@@ -1,8 +1,7 @@
-package cs3500.template.code;
+package cs3500.lab06.model;
 
 /**
  * GradeBook represents one student's scores on up to 3 exams.
- *
  */
 public class GradeBook {
   private final int exam1;
