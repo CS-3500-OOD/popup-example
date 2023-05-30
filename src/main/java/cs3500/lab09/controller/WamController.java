@@ -1,9 +1,9 @@
-package cs3500.lab06.controller;
+package cs3500.lab09.controller;
 
-import cs3500.lab06.model.BoardCell;
-import cs3500.lab06.model.BoardModel;
-import cs3500.lab06.model.Coord;
-import cs3500.lab06.model.Mole;
+import cs3500.lab09.model.BoardCell;
+import cs3500.lab09.model.BoardModel;
+import cs3500.lab09.model.Coord;
+import cs3500.lab09.model.Mole;
 import java.util.Random;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;

@@ -1,4 +1,4 @@
-package cs3500.lab06.model;
+package cs3500.lab09.model;
 
 /**
  * GradeBook represents one student's scores on up to 3 exams.

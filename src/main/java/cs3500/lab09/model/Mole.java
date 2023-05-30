@@ -1,4 +1,4 @@
-package cs3500.lab06.model;
+package cs3500.lab09.model;
 
 /**
  * Represents a mole in a game of Whack-A-Mole.

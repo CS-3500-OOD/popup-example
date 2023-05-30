@@ -1,7 +1,7 @@
-package cs3500.lab06;
+package cs3500.lab09;
 
-import cs3500.lab06.controller.WamController;
-import cs3500.lab06.model.BoardModel;
+import cs3500.lab09.controller.WamController;
+import cs3500.lab09.model.BoardModel;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
