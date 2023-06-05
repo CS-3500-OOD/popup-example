@@ -1,7 +1,7 @@
-package cs3500.lab09;
+package cs3500.lab10;
 
-import cs3500.lab09.controller.WamController;
-import cs3500.lab09.model.BoardModel;
+import cs3500.lab10.controller.WamController;
+import cs3500.lab10.model.BoardModel;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 /**
  * Represents a Whack-A-Mole game application.
  */
-public class Main extends Application {
+public class Driver extends Application {
   /**
    * Starts the GUI for a game of Whack-A-Mole.
    *
