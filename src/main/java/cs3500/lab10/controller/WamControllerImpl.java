@@ -62,7 +62,6 @@ public class WamControllerImpl implements WamController {
    *
    * @param coord the coordinates of the cell whacked
    */
-  @FXML
   private void handleWhack(Coord coord) {
     if (mole.getLocation().equals(coord)) {
       this.moleWhacks++;
