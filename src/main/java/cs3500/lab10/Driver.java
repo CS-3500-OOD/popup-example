@@ -2,7 +2,8 @@ package cs3500.lab10;
 
 import cs3500.lab10.controller.WamController;
 import cs3500.lab10.controller.WamControllerImpl;
-import cs3500.lab10.model.Board;
+import cs3500.lab10.model.WamBoard;
+import cs3500.lab10.model.BoardImpl;
 import cs3500.lab10.view.WamGuiView;
 import cs3500.lab10.view.WamGuiViewImpl;
 import javafx.application.Application;
@@ -23,7 +24,7 @@ public class Driver extends Application {
     stage.setTitle("The OOD Whack-a-Mole Arcade");
 
     // instantiate the board model and WAM controller
-    Board board = new Board();
+    WamBoard board = new BoardImpl();
     WamController wamController = new WamControllerImpl(board);
 
     // instantiate a simple Whack-a-Mole GUI view
