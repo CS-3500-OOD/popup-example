@@ -1,7 +1,7 @@
 package cs3500.lab10.controller;
 
 import cs3500.lab10.model.BoardCell;
-import cs3500.lab10.model.BoardModel;
+import cs3500.lab10.model.Board;
 import cs3500.lab10.model.Coord;
 import cs3500.lab10.model.Mole;
 import java.util.Objects;
@@ -23,7 +23,7 @@ import javafx.util.Duration;
  * Represents the controller for a game of Whack-a-Mole.
  */
 public class WamControllerImpl implements WamController {
-  private final BoardModel board;
+  private final Board board;
   private final Mole mole;
   private int moleWhacks;
 
@@ -39,7 +39,7 @@ public class WamControllerImpl implements WamController {
    *
    * @param board the Whack-a-Mole board
    */
-  public WamControllerImpl(BoardModel board) {
+  public WamControllerImpl(Board board) {
     this.board = Objects.requireNonNull(board);
     this.mole = new Mole(this.board.getRandomCell());
     this.moleWhacks = 0;

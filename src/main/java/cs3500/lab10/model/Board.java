@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * Represents a board of arbitrary dimensions for a game of Whack-A-Mole.
  */
-public class BoardModel {
+public class Board {
   private final BoardCell[][] board;
   private static final int BOARD_WIDTH = 3;
   private static final int BOARD_HEIGHT = 3;
@@ -13,7 +13,7 @@ public class BoardModel {
   /**
    * Instantiates a board for a game of Whack-A-Mole.
    */
-  public BoardModel() {
+  public Board() {
     this.board = new BoardCell[BOARD_HEIGHT][BOARD_WIDTH];
     for (int row = 0; row < BOARD_HEIGHT; row++) {
       for (int col = 0; col < BOARD_WIDTH; col++) {
