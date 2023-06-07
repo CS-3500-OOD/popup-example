@@ -1,7 +1,10 @@
 package cs3500.lab10;
 
 import cs3500.lab10.controller.WamController;
+import cs3500.lab10.controller.WamControllerImpl;
 import cs3500.lab10.model.BoardModel;
+import cs3500.lab10.view.WamGuiView;
+import cs3500.lab10.view.WamGuiViewImpl;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -17,25 +20,38 @@ public class Driver extends Application {
    * Starts the GUI for a game of Whack-A-Mole.
    *
    * @param stage the JavaFX stage to add elements to
-   * @throws IOException if the board layout cannot be loaded
    */
   @Override
-  public void start(Stage stage) throws IOException {
-    BorderPane root = new BorderPane();
-    FXMLLoader fxmlLoader = new FXMLLoader();
-    fxmlLoader.setLocation(getClass().getClassLoader().getResource("board.fxml"));
-    root.setCenter(fxmlLoader.load());
-    WamController wamController = fxmlLoader.getController();
+  public void start(Stage stage) {
+    // add a title to the stage
+    stage.setTitle("The OOD Whack-a-Mole Arcade");
 
-    BoardModel model = new BoardModel();
-    wamController.initialize(model);
+    // instantiate the board model and WAM controller
+    WamController wamController = new WamControllerImpl();
+    BoardModel board = new BoardModel();
 
-    Scene scene = new Scene(root, 500, 425);
-    stage.setTitle("Whack-a-Mole!");
-    stage.setScene(scene);
-    stage.show();
+    // instantiate a simple Whack-a-Mole GUI view
+    WamGuiView<WamController> wgv = new WamGuiViewImpl<>(wamController);
+
+    try {
+      // load and place the view's scene onto the stage
+      stage.setScene(wgv.load());
+
+      // fetch the view's controller
+      wamController.initialize(board);
+
+      // render the stage
+      stage.show();
+    } catch (IllegalStateException exc) {
+      System.err.println("Unable to load GUI.");
+    }
   }
 
+  /**
+   * Entry point for a game of Whack-a-Mole.
+   *
+   * @param args the command line arguments
+   */
   public static void main(String[] args) {
     launch();
   }
