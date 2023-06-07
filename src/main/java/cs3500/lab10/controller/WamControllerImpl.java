@@ -4,6 +4,7 @@ import cs3500.lab10.model.BoardCell;
 import cs3500.lab10.model.BoardModel;
 import cs3500.lab10.model.Coord;
 import cs3500.lab10.model.Mole;
+import java.util.Objects;
 import java.util.Random;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -19,10 +20,10 @@ import javafx.scene.layout.RowConstraints;
 import javafx.util.Duration;
 
 /**
- * Represents the controller for a game of Whack-A-Mole.
+ * Represents the controller for a game of Whack-a-Mole.
  */
 public class WamControllerImpl implements WamController {
-  BoardModel board;
+  private final BoardModel board;
   private Mole mole;
   private int moleWhacks;
 
@@ -37,17 +38,21 @@ public class WamControllerImpl implements WamController {
   private static final int BUTTON_SIZE = 100;
 
   /**
-   * Initializes a game of Whack-A-Mole.
+   * Instantiates a game of Whack-a-Mole.
    *
-   * @param board the game board
+   * @param board the Whack-a-Mole board
+   */
+  public WamControllerImpl(BoardModel board) {
+    this.board = Objects.requireNonNull(board);
+  }
+
+  /**
+   * Initializes a game of Whack-a-Mole.
+   *
    * @throws IllegalStateException if the game board is not defined
    */
   @FXML
-  public void run(BoardModel board) throws IllegalStateException {
-    if (this.board != null) {
-      throw new IllegalStateException("Model may only be initialized once.");
-    }
-    this.board = board;
+  public void run() throws IllegalStateException {
     this.mole = new Mole(this.board.getRandomCell());
     this.moleWhacks = 0;
     this.buttons = new StringProperty[this.board.getRowCount()][this.board.getColCount()];

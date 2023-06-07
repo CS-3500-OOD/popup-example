@@ -23,8 +23,8 @@ public class Driver extends Application {
     stage.setTitle("The OOD Whack-a-Mole Arcade");
 
     // instantiate the board model and WAM controller
-    WamController wamController = new WamControllerImpl();
     BoardModel board = new BoardModel();
+    WamController wamController = new WamControllerImpl(board);
 
     // instantiate a simple Whack-a-Mole GUI view
     WamGuiView wgv = new WamGuiViewImpl(wamController);
@@ -34,7 +34,7 @@ public class Driver extends Application {
       stage.setScene(wgv.load());
 
       // fetch the view's controller
-      wamController.run(board);
+      wamController.run();
 
       // render the stage
       stage.show();
