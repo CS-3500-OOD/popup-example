@@ -5,11 +5,7 @@ import cs3500.lab10.controller.WamControllerImpl;
 import cs3500.lab10.model.BoardModel;
 import cs3500.lab10.view.WamGuiView;
 import cs3500.lab10.view.WamGuiViewImpl;
-import java.io.IOException;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /**
@@ -38,7 +34,7 @@ public class Driver extends Application {
       stage.setScene(wgv.load());
 
       // fetch the view's controller
-      wamController.initialize(board);
+      wamController.run(board);
 
       // render the stage
       stage.show();

@@ -9,5 +9,5 @@ public interface WamController {
    * @param board the game board
    * @throws IllegalStateException if the game board is not defined
    */
-  void initialize(BoardModel board) throws IllegalStateException;
+  void run(BoardModel board) throws IllegalStateException;
 }

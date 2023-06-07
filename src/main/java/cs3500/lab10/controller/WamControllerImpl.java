@@ -43,7 +43,7 @@ public class WamControllerImpl implements WamController {
    * @throws IllegalStateException if the game board is not defined
    */
   @FXML
-  public void initialize(BoardModel board) throws IllegalStateException {
+  public void run(BoardModel board) throws IllegalStateException {
     if (this.board != null) {
       throw new IllegalStateException("Model may only be initialized once.");
     }
