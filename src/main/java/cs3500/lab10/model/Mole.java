@@ -16,7 +16,7 @@ public class Mole {
   public Mole(BoardCell initLocation) {
     this.location = initLocation;
     this.lastKnownLocation = initLocation;
-    this.isVisible = true;
+    this.isVisible = false;
   }
 
   /**
