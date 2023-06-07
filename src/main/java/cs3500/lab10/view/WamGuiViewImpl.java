@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 /**
  * Represents a simple Whack-a-Mole GUI view.
  */
-public class WamGuiViewImpl<T> implements WamGuiView<T> {
+public class WamGuiViewImpl implements WamGuiView {
   private final FXMLLoader loader;
 
   /**
@@ -33,15 +33,5 @@ public class WamGuiViewImpl<T> implements WamGuiView<T> {
     } catch (IOException exc) {
       throw new IllegalStateException("Unable to load layout.");
     }
-  }
-
-  /**
-   * Returns the controller associated with the simple
-   * Whack-a-Mole GUI view's root object.
-   *
-   * @return the controller
-   */
-  public T getController() {
-    return this.loader.getController();
   }
 }

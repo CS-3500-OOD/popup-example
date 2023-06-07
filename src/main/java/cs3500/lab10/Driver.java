@@ -31,7 +31,7 @@ public class Driver extends Application {
     BoardModel board = new BoardModel();
 
     // instantiate a simple Whack-a-Mole GUI view
-    WamGuiView<WamController> wgv = new WamGuiViewImpl<>(wamController);
+    WamGuiView wgv = new WamGuiViewImpl(wamController);
 
     try {
       // load and place the view's scene onto the stage
