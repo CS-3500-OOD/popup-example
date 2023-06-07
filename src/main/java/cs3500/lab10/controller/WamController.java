@@ -1,7 +1,8 @@
 package cs3500.lab10.controller;
 
-import cs3500.lab10.model.BoardModel;
-
+/**
+ * Represents a controller for a game of Whack-a-Mole.
+ */
 public interface WamController {
   /**
    * Initializes a game of Whack-A-Mole.
