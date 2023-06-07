@@ -63,7 +63,7 @@ public class WamControllerImpl implements WamController {
    * @param coord the coordinates of the cell whacked
    */
   @FXML
-  protected void handleWhack(Coord coord) {
+  private void handleWhack(Coord coord) {
     if (mole.getLocation().equals(coord)) {
       this.moleWhacks++;
 
@@ -79,12 +79,13 @@ public class WamControllerImpl implements WamController {
   /**
    * Updates the game's view and model to handle moving the mole.
    */
-  protected void nextTurn() {
+  private void nextTurn() {
     if (mole.isVisible()) {
-      // show mole
+      // hide mole from previous location
       Coord origin = mole.getLastKnownLocation();
       buttons[origin.getRow()][origin.getCol()].set("");
 
+      // show mole at new location
       Coord dest = mole.getLocation();
       buttons[dest.getRow()][dest.getCol()].set(">MOLE<");
 
