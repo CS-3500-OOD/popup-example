@@ -24,13 +24,13 @@ import javafx.util.Duration;
  */
 public class WamControllerImpl implements WamController {
   private final BoardModel board;
-  private Mole mole;
+  private final Mole mole;
   private int moleWhacks;
 
 
   @FXML
   private GridPane buttonGrid;
-  private StringProperty[][] buttons;
+  private final StringProperty[][] buttons;
   private final Random rand = new Random();
   private static final int BUTTON_SIZE = 100;
 
@@ -142,6 +142,7 @@ public class WamControllerImpl implements WamController {
         button.setPrefHeight(BUTTON_SIZE);
         button.setOnAction(e -> handleWhack(coord));
 
+        // visually remove mole
         buttons[row][col] = new SimpleStringProperty("");
         button.textProperty().bind(buttons[row][col]);
         buttonGrid.add(button, col, row);
