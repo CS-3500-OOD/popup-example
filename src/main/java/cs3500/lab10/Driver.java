@@ -2,8 +2,8 @@ package cs3500.lab10;
 
 import cs3500.lab10.controller.WamController;
 import cs3500.lab10.controller.WamControllerImpl;
-import cs3500.lab10.model.WamBoard;
 import cs3500.lab10.model.BoardImpl;
+import cs3500.lab10.model.WamBoard;
 import cs3500.lab10.view.WamGuiView;
 import cs3500.lab10.view.WamGuiViewImpl;
 import javafx.application.Application;

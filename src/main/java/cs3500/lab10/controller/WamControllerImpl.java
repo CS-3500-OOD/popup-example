@@ -1,9 +1,9 @@
 package cs3500.lab10.controller;
 
-import cs3500.lab10.model.WamBoard;
 import cs3500.lab10.model.BoardCell;
 import cs3500.lab10.model.Coord;
 import cs3500.lab10.model.Mole;
+import cs3500.lab10.model.WamBoard;
 import java.util.Objects;
 import java.util.Random;
 import javafx.animation.Animation;
@@ -53,9 +53,8 @@ public class WamControllerImpl implements WamController {
    */
   @FXML
   public void run() throws IllegalStateException {
-    this.initTimeline();
     this.initButtons();
-    this.nextTurn();
+    this.initTimeline();
   }
 
   /**
