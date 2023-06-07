@@ -30,11 +30,8 @@ public class WamControllerImpl implements WamController {
 
   @FXML
   private GridPane buttonGrid;
-
   private StringProperty[][] buttons;
-
   private final Random rand = new Random();
-
   private static final int BUTTON_SIZE = 100;
 
   /**
@@ -44,6 +41,9 @@ public class WamControllerImpl implements WamController {
    */
   public WamControllerImpl(BoardModel board) {
     this.board = Objects.requireNonNull(board);
+    this.mole = new Mole(this.board.getRandomCell());
+    this.moleWhacks = 0;
+    this.buttons = new StringProperty[this.board.getRowCount()][this.board.getColCount()];
   }
 
   /**
@@ -53,44 +53,8 @@ public class WamControllerImpl implements WamController {
    */
   @FXML
   public void run() throws IllegalStateException {
-    this.mole = new Mole(this.board.getRandomCell());
-    this.moleWhacks = 0;
-    this.buttons = new StringProperty[this.board.getRowCount()][this.board.getColCount()];
-
-    KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.75), e -> this.nextTurn());
-    Timeline timeline = new Timeline(keyFrame);
-    timeline.setCycleCount(Animation.INDEFINITE);
-    timeline.playFromStart();
-
-    // constraints each column/row to stretch to fill available space
-    for (int row = 0; row < this.board.getRowCount(); row++) {
-      RowConstraints rowConstraints = new RowConstraints();
-      rowConstraints.setVgrow(Priority.ALWAYS);
-      buttonGrid.getRowConstraints().add(rowConstraints);
-
-      // iterate through each column
-      for (int col = 0; col < this.board.getColCount(); col++) {
-        // only initialize columns for first row
-        if (row == 0) {
-          ColumnConstraints colConstraints = new ColumnConstraints();
-          colConstraints.setHgrow(Priority.ALWAYS);
-          buttonGrid.getColumnConstraints().add(colConstraints);
-        }
-
-        Coord coord = new Coord(row, col);
-
-        // create button
-        Button button = new Button();
-        button.setPrefWidth(BUTTON_SIZE);
-        button.setPrefHeight(BUTTON_SIZE);
-        button.setOnAction(e -> handleWhack(coord));
-
-        buttons[row][col] = new SimpleStringProperty("");
-        button.textProperty().bind(buttons[row][col]);
-        buttonGrid.add(button, col, row);
-      }
-    }
-
+    this.initTimeline();
+    this.initButtons();
     this.nextTurn();
   }
 
@@ -136,6 +100,52 @@ public class WamControllerImpl implements WamController {
       // update mole
       mole.move(destCell);
       mole.setVisible(true);
+    }
+  }
+
+  /**
+   * Initializes the timeline for each mole movement.
+   */
+  private void initTimeline() {
+    KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.75), e -> this.nextTurn());
+    Timeline timeline = new Timeline(keyFrame);
+    timeline.setCycleCount(Animation.INDEFINITE);
+    timeline.playFromStart();
+  }
+
+  /**
+   * Dynamically generates grid and buttons. Adds an event handler to
+   * each button for supporting whacks.
+   */
+  private void initButtons() {
+    // add constraints to each column/row to stretch + fill available space
+    for (int row = 0; row < this.board.getRowCount(); row++) {
+      RowConstraints rowConstraints = new RowConstraints();
+      rowConstraints.setVgrow(Priority.ALWAYS);
+      buttonGrid.getRowConstraints().add(rowConstraints);
+
+      // iterate through each column
+      for (int col = 0; col < this.board.getColCount(); col++) {
+        // only initialize columns for first row
+        if (row == 0) {
+          ColumnConstraints colConstraints = new ColumnConstraints();
+          colConstraints.setHgrow(Priority.ALWAYS);
+          buttonGrid.getColumnConstraints().add(colConstraints);
+        }
+
+        // create coordinate
+        Coord coord = new Coord(row, col);
+
+        // create button
+        Button button = new Button();
+        button.setPrefWidth(BUTTON_SIZE);
+        button.setPrefHeight(BUTTON_SIZE);
+        button.setOnAction(e -> handleWhack(coord));
+
+        buttons[row][col] = new SimpleStringProperty("");
+        button.textProperty().bind(buttons[row][col]);
+        buttonGrid.add(button, col, row);
+      }
     }
   }
 }
