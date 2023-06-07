@@ -141,9 +141,11 @@ public class WamControllerImpl implements WamController {
         button.setPrefHeight(BUTTON_SIZE);
         button.setOnAction(e -> handleWhack(coord));
 
-        // visually remove mole
+        // bind text
         buttons[row][col] = new SimpleStringProperty("");
         button.textProperty().bind(buttons[row][col]);
+
+        // add button to grid
         buttonGrid.add(button, col, row);
       }
     }
