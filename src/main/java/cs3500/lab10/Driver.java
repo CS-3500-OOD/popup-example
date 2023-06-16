@@ -6,6 +6,7 @@ import cs3500.lab10.model.BoardImpl;
 import cs3500.lab10.model.WamBoard;
 import cs3500.lab10.view.WamGuiView;
 import cs3500.lab10.view.WamGuiViewImpl;
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -25,7 +26,7 @@ public class Driver extends Application {
 
     // instantiate the board model and WAM controller
     WamBoard board = new BoardImpl();
-    WamController wamController = new WamControllerImpl(board);
+    WamController wamController = new WamControllerImpl(board, stage);
 
     // instantiate a simple Whack-a-Mole GUI view
     WamGuiView wgv = new WamGuiViewImpl(wamController);
@@ -39,7 +40,7 @@ public class Driver extends Application {
 
       // render the stage
       stage.show();
-    } catch (IllegalStateException exc) {
+    } catch (IllegalStateException | IOException e) {
       System.err.println("Unable to load GUI.");
     }
   }
