@@ -73,7 +73,7 @@ public class WamControllerImpl implements WamController {
     FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("popup.fxml"));
     loader.setController(this);
     Scene s = loader.load();
-    popup.getContent().add((Node)s.getRoot());
+    popup.getContent().add(s.getRoot());
     Button b = new Button("Done!1");
     b.setOnAction(e -> popup.hide());
     popup.getContent().add(b);
